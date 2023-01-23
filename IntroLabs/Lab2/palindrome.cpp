@@ -1,20 +1,27 @@
 #include <iostream>
-#include <string>
 
 using namespace std;
 
 int main() {
-    int n, wordCount = 0;
-    string word, s;
+    int n, i = 0, flag = 0;
     cin >> n;
-    cin.ignore(); // Ignore the newline character after the integer
-    while (cin >> s) {
-        word += s;
-        wordCount++;
-        if (wordCount == n) {
+    char word[n], x;
+    while (cin >> x){
+        word[i] = x;
+        i++;
+    }
+
+    for (int i = 0; i < n; i++){
+        if (word[i] != word[n-i-1]) {
+            flag = 1;
             break;
         }
     }
-    cout << word << endl;
+    if (flag) {
+        cout << "Not A Palindrome" << endl;
+    }
+    else {
+        cout << "Palindrome" << endl;
+    }
     return 0;
 }
